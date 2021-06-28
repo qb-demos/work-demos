@@ -72,16 +72,10 @@ export default {
 
 <style scoped lang="less">
 .sidebar {
-  position: absolute;
-  left: 0;
-  top: 70px;
-  bottom: 0;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 0;
-  }
+  height: 100%;
   .sidebar-el-menu:not(.el-menu--collapse) {
     width: 250px;
+    height: 100%;
     display: flex;
     flex-direction: column;
   }

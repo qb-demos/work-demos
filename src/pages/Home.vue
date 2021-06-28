@@ -1,7 +1,14 @@
 <template>
-  <div class="home">
-    <PageHeader />
-    <PageSlider />
+  <div class="home wrapper">
+    <div class="header-com">
+      <PageHeader />
+    </div>
+    <div class="main-wrapper">
+      <div class="slider">
+        <PageSlider />
+      </div>
+      <div class="main"></div>
+    </div>
   </div>
 </template>
 
@@ -18,3 +25,25 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.home {
+  display: flex;
+  flex-direction: column;
+  .header-wrapper {
+    flex: 0 0 70px;
+  }
+  .main-wrapper {
+    flex: 1;
+    display: flex;
+    .slider {
+      height: 100%;
+    }
+    .main {
+      height: 100%;
+      flex: 1;
+      background-color: pink;
+    }
+  }
+}
+</style>
