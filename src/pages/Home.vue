@@ -7,7 +7,9 @@
       <div class="slider">
         <PageSlider />
       </div>
-      <div class="main"></div>
+      <div class="main">
+        <EditorCom :value="value" :options="options"></EditorCom>
+      </div>
     </div>
   </div>
 </template>
@@ -16,12 +18,21 @@
 // @ is an alias to /src
 import PageSlider from '@/components/PageSlider.vue'
 import PageHeader from '@/components/PageHeader.vue'
+import EditorCom from './EditorCom'
+import * as testValue from './EditorCom/testValue'
 
 export default {
   name: 'home',
   components: {
     PageSlider,
-    PageHeader
+    PageHeader,
+    EditorCom
+  },
+  data () {
+    return {
+      options: { },
+      value: testValue.sql
+    }
   }
 }
 </script>
@@ -35,6 +46,7 @@ export default {
   }
   .main-wrapper {
     flex: 1;
+    height: 0;
     display: flex;
     .slider {
       height: 100%;
@@ -42,7 +54,8 @@ export default {
     .main {
       height: 100%;
       flex: 1;
-      background-color: pink;
+      width: 0;
+      background-color: #f1f3f4;
     }
   }
 }

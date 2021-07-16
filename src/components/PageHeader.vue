@@ -5,7 +5,7 @@
       <i class="el-icon-menu"></i>
     </div>
     <div class="logo">
-      <span style="position:relative;top:-2px;">管理平台</span>
+      <span style="position:relative;top:-2px;">DEMO</span>
     </div>
     <div class="header-right">
       <div class="header-user-con">
