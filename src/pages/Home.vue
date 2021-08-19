@@ -8,6 +8,11 @@
         <PageSlider />
       </div>
       <div class="main">
+        <!-- <DiffEditor
+          :originalValue="originalValue"
+          :modifiedValue="modifiedValue"
+          :options="options"
+        ></DiffEditor> -->
         <EditorCom :value="value" :options="options"></EditorCom>
       </div>
     </div>
@@ -19,6 +24,7 @@
 import PageSlider from '@/components/PageSlider.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import EditorCom from './EditorCom'
+// import DiffEditor from './EditorCom/DiffEditor'
 import * as testValue from './EditorCom/testValue'
 
 export default {
@@ -27,11 +33,14 @@ export default {
     PageSlider,
     PageHeader,
     EditorCom
+    // DiffEditor
   },
   data () {
     return {
-      options: { },
-      value: testValue.sql
+      options: { find: true },
+      value: testValue.sql,
+      originalValue: testValue.sql,
+      modifiedValue: testValue.sql2
     }
   }
 }

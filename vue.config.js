@@ -13,10 +13,13 @@ module.exports = {
   },
   configureWebpack: (config) => {
     config.plugins = [
+      ...config.plugins,
       // monaco editor
       new MonacoWebpackPlugin({
-        languages: ['javascript', 'css', 'html', 'json', 'sql'], // 语言包
-        features: ['coreCommands', 'find'] // 控件
+        // 语言包
+        languages: ['javascript', 'css', 'html', 'json', 'sql'],
+        // 控件(https://github.com/microsoft/monaco-editor-webpack-plugin#options)
+        features: ['clipboard', 'comment', 'gotoLine', 'smartSelect', 'suggest', 'wordHighlighter', 'coreCommands', 'find']
       })
     ]
     let pluginsProd = []

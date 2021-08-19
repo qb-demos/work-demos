@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import monacoLoader from '@monaco-editor/loader'
 import * as theme from './theme'
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js'
 
 export default {
   name: 'EditorCom',
@@ -46,30 +46,27 @@ export default {
   methods: {
     init () {
       this.loading = true
-      monacoLoader.init()
-        .then(monaco => {
-          monaco.editor.defineTheme('customTheme', theme.customTheme01)
-          const options = Object.assign({ value: this.value, theme: 'customTheme' }, this.defaultOptions, this.options)
-          this.IStandaloneCodeEditor = monaco.editor.create(document.getElementById('container'), options)
-          this.ITextModel = this.IStandaloneCodeEditor.getModel()
-          this.loading = false
+      monaco.editor.defineTheme('customTheme', theme.customTheme01)
+      const options = Object.assign({ value: this.value, theme: 'customTheme' }, this.defaultOptions, this.options)
+      this.IStandaloneCodeEditor = monaco.editor.create(document.getElementById('container'), options)
+      this.ITextModel = this.IStandaloneCodeEditor.getModel()
+      this.loading = false
 
-          // 鼠标事件
-          this.IStandaloneCodeEditor.onMouseUp((e) => {
-            const selection = this.ITextModel.getValueInRange(this.IStandaloneCodeEditor.getSelection())
-            console.log('selection:', selection)
-          })
-          // 键盘事件
-          this.IStandaloneCodeEditor.onKeyUp((e) => {
-            const selection = this.ITextModel.getValueInRange(this.IStandaloneCodeEditor.getSelection())
-            console.log('selection:', selection)
-          })
-          // model 内容变更
-          this.ITextModel.onDidChangeContent(e => {
-            const value = this.ITextModel.getValue()
-            this.$emit('onVlueChange', value)
-          })
-        })
+      // 鼠标事件
+      this.IStandaloneCodeEditor.onMouseUp((e) => {
+        const selection = this.ITextModel.getValueInRange(this.IStandaloneCodeEditor.getSelection())
+        console.log('selection:', selection)
+      })
+      // 键盘事件
+      this.IStandaloneCodeEditor.onKeyUp((e) => {
+        const selection = this.ITextModel.getValueInRange(this.IStandaloneCodeEditor.getSelection())
+        console.log('selection:', selection)
+      })
+      // model 内容变更
+      this.ITextModel.onDidChangeContent(e => {
+        const value = this.ITextModel.getValue()
+        this.$emit('onVlueChange', value)
+      })
     },
     editorLayout () {
       this.IStandaloneCodeEditor.layout()
