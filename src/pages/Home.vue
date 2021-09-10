@@ -13,7 +13,8 @@
           :modifiedValue="modifiedValue"
           :options="options"
         ></DiffEditor> -->
-        <EditorCom :value="value" :options="options"></EditorCom>
+        <!-- <EditorCom :value="value" :options="options"></EditorCom> -->
+        <TreeTable></TreeTable>
       </div>
     </div>
   </div>
@@ -23,8 +24,9 @@
 // @ is an alias to /src
 import PageSlider from '@/components/PageSlider.vue'
 import PageHeader from '@/components/PageHeader.vue'
-import EditorCom from './EditorCom'
+// import EditorCom from './EditorCom'
 // import DiffEditor from './EditorCom/DiffEditor'
+import TreeTable from './TreeTable'
 import * as testValue from './EditorCom/testValue'
 
 export default {
@@ -32,7 +34,8 @@ export default {
   components: {
     PageSlider,
     PageHeader,
-    EditorCom
+    TreeTable
+    // EditorCom
     // DiffEditor
   },
   data () {
