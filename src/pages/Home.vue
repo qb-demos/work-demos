@@ -14,7 +14,8 @@
           :options="options"
         ></DiffEditor> -->
         <!-- <EditorCom :value="value" :options="options"></EditorCom> -->
-        <TreeTable></TreeTable>
+        <!-- <TreeTable></TreeTable> -->
+        <MarkDown></MarkDown>
       </div>
     </div>
   </div>
@@ -26,7 +27,8 @@ import PageSlider from '@/components/PageSlider.vue'
 import PageHeader from '@/components/PageHeader.vue'
 // import EditorCom from './EditorCom'
 // import DiffEditor from './EditorCom/DiffEditor'
-import TreeTable from './TreeTable'
+// import TreeTable from './TreeTable'
+import MarkDown from './MarkDown'
 import * as testValue from './EditorCom/testValue'
 
 export default {
@@ -34,7 +36,8 @@ export default {
   components: {
     PageSlider,
     PageHeader,
-    TreeTable
+    MarkDown
+    // TreeTable
     // EditorCom
     // DiffEditor
   },
