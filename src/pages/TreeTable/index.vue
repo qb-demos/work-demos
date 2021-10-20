@@ -1,6 +1,7 @@
 <template>
   <div>
     <el-table
+      class="test"
       :data="tableData"
       :lazy="true"
       :load="load"
@@ -9,6 +10,12 @@
       row-key="id"
       style="width: 100%"
     >
+      <el-table-column label="拖拽" width="100">
+        <template slot-scope="scope">
+          <span v-if="false">{{ scope.row }}</span>
+          <span class="el-icon-rank rank"></span>
+        </template>
+      </el-table-column>
       <el-table-column
         v-for="col in cols"
         :prop="col.name"
@@ -23,12 +30,16 @@
       </el-table-column>
     </el-table>
     <div>
-      <el-button type="primary" size="small" @click="chengeData">hasChildren = false</el-button>
+      <el-button type="primary" size="small" @click="chengeData"
+        >hasChildren = false</el-button
+      >
     </div>
   </div>
 </template>
 
 <script>
+import Sortable from 'sortablejs'
+
 export default {
   name: 'TreeTable',
   components: {},
@@ -36,13 +47,17 @@ export default {
   data () {
     return {
       tableData: [],
-      cols: []
+      cols: [],
+      sortable: null
     }
   },
   computed: {},
   watch: {},
   created () {
     this.init()
+  },
+  mounted () {
+    this.initSort()
   },
   methods: {
     init () {
@@ -79,6 +94,23 @@ export default {
         }
       ]
     },
+    initSort () {
+      const el = document.querySelectorAll('.test > .el-table__body-wrapper > table > tbody')[0]
+      // const sortable = new Sortable(el, options);
+      // 根据具体需求配置options配置项
+      this.sortable = new Sortable(el, {
+        handle: '.rank',
+        // 监听拖动结束事件
+        onEnd: (evt) => {
+          console.log('%c this.tableData: ', 'background-color: pink', this.tableData.map(v => v.id))
+          const tableData = this.tableData
+          const item = tableData.splice(evt.oldIndex, 1)
+          tableData.splice(evt.newIndex, 0, item[0])
+          this.tableData = tableData
+          console.log('%c this.tableData: ', 'background-color: pink', this.tableData.map(v => v.id))
+        }
+      })
+    },
     load (tree, treeNode, resolve) {
       setTimeout(() => {
         resolve([
@@ -98,10 +130,12 @@ export default {
     },
     chengeData () {
       const tableData = this.tableData
-      for (const item of tableData) {
-        item.hasChildren = false
-      }
+      // for (const item of tableData) {
+      //   item.hasChildren = false
+      // }
+      tableData[0].hasChildren = !tableData[0].hasChildren
       this.tableData = tableData
+      console.log('%c this.tableData[0]: ', 'background-color: pink', JSON.parse(JSON.stringify(this.tableData[0])))
     }
   }
 }
