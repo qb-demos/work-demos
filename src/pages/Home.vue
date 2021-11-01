@@ -15,7 +15,8 @@
         ></DiffEditor> -->
         <!-- <EditorCom :value="value" :options="options"></EditorCom> -->
         <!-- <TreeTable></TreeTable> -->
-        <MarkDown></MarkDown>
+        <!-- <MarkDown></MarkDown> -->
+        <DragDom></DragDom>
       </div>
     </div>
   </div>
@@ -28,7 +29,8 @@ import PageHeader from '@/components/PageHeader.vue'
 // import EditorCom from './EditorCom'
 // import DiffEditor from './EditorCom/DiffEditor'
 // import TreeTable from './TreeTable'
-import MarkDown from './MarkDown'
+// import MarkDown from './MarkDown'
+import DragDom from './DragDom'
 import * as testValue from './EditorCom/testValue'
 
 export default {
@@ -36,7 +38,8 @@ export default {
   components: {
     PageSlider,
     PageHeader,
-    MarkDown
+    DragDom
+    // MarkDown
     // TreeTable
     // EditorCom
     // DiffEditor
@@ -63,6 +66,7 @@ export default {
     flex: 1;
     height: 0;
     display: flex;
+    position: relative;
     .slider {
       height: 100%;
     }
