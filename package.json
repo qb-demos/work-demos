@@ -12,6 +12,7 @@
     "core-js": "^3.16.2",
     "element-ui": "^2.15.6",
     "monaco-editor": "^0.27.0",
+    "print-js": "^1.6.0",
     "sortablejs": "^1.14.0",
     "vue": "^2.6.14",
     "vue-drag-resize": "^1.5.4",

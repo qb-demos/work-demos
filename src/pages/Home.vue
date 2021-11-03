@@ -16,7 +16,8 @@
         <!-- <EditorCom :value="value" :options="options"></EditorCom> -->
         <!-- <TreeTable></TreeTable> -->
         <!-- <MarkDown></MarkDown> -->
-        <DragDom></DragDom>
+        <!-- <DragDom></DragDom> -->
+        <PrintPage></PrintPage>
       </div>
     </div>
   </div>
@@ -30,7 +31,8 @@ import PageHeader from '@/components/PageHeader.vue'
 // import DiffEditor from './EditorCom/DiffEditor'
 // import TreeTable from './TreeTable'
 // import MarkDown from './MarkDown'
-import DragDom from './DragDom'
+// import DragDom from './DragDom'
+import PrintPage from './PrintPage/WordType'
 import * as testValue from './EditorCom/testValue'
 
 export default {
@@ -38,7 +40,8 @@ export default {
   components: {
     PageSlider,
     PageHeader,
-    DragDom
+    PrintPage
+    // DragDom
     // MarkDown
     // TreeTable
     // EditorCom
