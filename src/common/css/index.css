@@ -1,2 +1,12 @@
 @import './reset.css';
 @import './github-md.css';
+
+.page-title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+.page-title::before {
+  content: '标题：';
+}

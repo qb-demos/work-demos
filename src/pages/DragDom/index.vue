@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="page-title">拖拽修改宽度</div>
     <div id="box">
       <div id="left" :style="{ width: `${dragWidth}px` }"></div>
       <div id="split-panel"></div>

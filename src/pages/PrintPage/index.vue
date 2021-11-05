@@ -1,5 +1,6 @@
 <template>
   <div class="wrap">
+    <div class="page-title">打印指定 DOM 元素</div>
     <div>
       <el-button @click="printHTML" type="primary" style="margin: 15px"
         >打印 DOM 元素</el-button

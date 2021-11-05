@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <div class="page-title">格式化输入</div>
     <MaskedInput
       v-model="phone"
       mask="(+);(+);(+)"

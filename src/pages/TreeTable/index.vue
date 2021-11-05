@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="page-title">树形表格</div>
     <el-table
       class="test"
       :data="tableData"

@@ -1,5 +1,6 @@
 <template>
   <div v-loading="loading" class="wrap">
+    <div class="page-title">monaco-editor</div>
     <div id="container" style="height: 100%"></div>
   </div>
 </template>
@@ -80,6 +81,5 @@ export default {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding: 20px;
 }
 </style>
