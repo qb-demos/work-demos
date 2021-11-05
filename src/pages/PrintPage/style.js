@@ -1,3 +1,4 @@
+export default `@media print {
 .markdown-body .octicon {
   display: inline-block;
   fill: currentColor;
@@ -1027,3 +1028,5 @@ dl {
 div.pageBlock {
   page-break-before: always;
 }
+
+}`

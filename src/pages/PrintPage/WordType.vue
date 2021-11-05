@@ -1,9 +1,9 @@
 <template>
   <div class="wrap">
-    <h2>打印页面内指定元素为 PDF</h2>
     <div>
-      <el-button @click="printHTML">打印 DOM 元素</el-button>
-      <el-button @click="printJSON">打印 JSON 数据</el-button>
+      <el-button @click="printHTML" type="primary" style="margin: 15px"
+        >打印 DOM 元素</el-button
+      >
       <div id="printBox" class="markdown-body">
         <h1 id="h1-heading-1">
           <a name="Heading 1" class="reference-link"></a
@@ -349,33 +349,14 @@
 <script>
 import print from 'print-js'
 import 'print-js/dist/print.css'
+import printStyle from './style'
 
 export default {
   name: 'PrintPage',
   components: {},
   props: {},
   data () {
-    return {
-      printUrl: '',
-      printUrl2: '',
-      someJSONdata: [
-        {
-          name: 'John Doe',
-          email: 'john@doe.com',
-          phone: '111-111-1111'
-        },
-        {
-          name: 'Barry Allen',
-          email: 'barry@flash.com',
-          phone: '222-222-2222'
-        },
-        {
-          name: 'Cool Dude',
-          email: 'cool@dude.com',
-          phone: '333-333-3333'
-        }
-      ]
-    }
+    return {}
   },
   computed: {},
   watch: {},
@@ -386,14 +367,15 @@ export default {
       print({
         printable: 'printBox',
         type: 'html',
-        style: 'font-size: 20px;color: pink;',
+        // style 可用，css 不可用，可能是引入时路径出错
+        style: printStyle,
+        // css: require('./test.css'),
+        scanStyles: false,
         maxWidth: 800,
-        documentTitle: '数据服务平台 - Api 文档',
-        targetStyles: ['*'] // 打印内容使用所有HTML样式，没有设置这个属性/值，设置分页打印没有效果
+        documentTitle: '打印测试'
+        // 打印内容使用所有 HTML 样式，没有设置这个属性/值，设置分页打印没有效果
+        // targetStyles: ['*']
       })
-    },
-    printJSON () {
-      print({ printable: this.someJSONdata, properties: ['name', 'email', 'phone'], type: 'json' })
     }
   }
 }
