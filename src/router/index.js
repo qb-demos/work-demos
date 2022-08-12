@@ -1,35 +1,37 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeCom from '@/layout/Home.vue'
-import store from '@/store'
-
-Vue.use(VueRouter)
-
-const files = require.context('../pages', true, /index.vue$/)
-const pages = files.keys().map(fileName => {
-  const name = fileName.split('/')[1]
-  const path = `/${name}`
-  return { name, path, component: files(fileName).default }
-})
-// console.log('%c pages: ', 'background-color: pink', pages)
+import { createRouter, createWebHistory } from 'vue-router'
+import Layout from '../views/Home.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeCom
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: HomeCom,
-    children: pages
+    name: 'Home',
+    component: Layout,
+    children: [
+      {
+        path: 'element',
+        name: 'element',
+        component: () => import('../views/element/index.vue')
+      },
+      {
+        path: 'three',
+        name: 'three',
+        component: () => import('../views/three/index.vue')
+      },
+      {
+        path: 'harp',
+        name: 'harp',
+        component: () => import('../views/harp/index.vue')
+      },
+      {
+        path: 'others',
+        name: 'others',
+        component: () => import('../views/others/index.vue')
+      }
+    ]
   }
 ]
 
-// 导航菜单使用
-store.commit('setRoutes', routes)
-
-const router = new VueRouter({ routes })
-
-export default router
+export default createRouter({
+  history: createWebHistory(),
+  routes
+})

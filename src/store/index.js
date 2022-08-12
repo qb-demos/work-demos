@@ -1,17 +1,3 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+const store = createPinia()
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  state: {
-    routes: []
-  },
-  mutations: {
-    setRoutes: (state, data) => {
-      state.routes = data
-    }
-  },
-  actions: {},
-  modules: {}
-})
+export default store

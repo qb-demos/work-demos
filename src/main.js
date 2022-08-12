@@ -1,17 +1,16 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import './styles/index.scss'
 
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import './common/css/index.css'
-Vue.use(ElementUI, {
-  size: 'small'
-})
+import ElementPlus from 'element-plus'
+import locale from 'element-plus/lib/locale/lang/zh-cn' // 中文语言
+// element-plus 自定义主题文件
+import './styles/element/index.scss'
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const app = createApp(App)
+app.use(router)
+app.use(store)
+app.use(ElementPlus, { locale })
+app.mount('#app')

@@ -1,8 +1,9 @@
 <template>
-  <div id="app">
-    <router-view />
-  </div>
+  <router-view></router-view>
 </template>
 
-<style lang="less">
+<script setup>
+</script>
+
+<style scoped>
 </style>
