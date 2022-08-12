@@ -78,7 +78,7 @@ watch(menuCollapse, async (n, o) => {
   .brand {
     width: 100%;
     flex: 0 0 56px;
-    background-color: pink;
+    background-color: var(--el-menu-hover-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;

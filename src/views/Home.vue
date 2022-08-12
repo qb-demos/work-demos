@@ -50,8 +50,8 @@ import TopHeader from '../components/TopHeader/index.vue'
     .content {
       width: 100%;
       height: 100%;
-      padding: 15px;
-      padding-top: 75px;
+      // padding: 15px;
+      // padding-top: 75px;
     }
   }
 }

@@ -16,20 +16,12 @@ body,
   height: 100%;
 }
 
-ul, li, ol {
+ul,
+li,
+ol {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.radius {
-  border-radius: 10px;
-  // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  box-shadow: var(--el-box-shadow-light);
-}
-
-.shadow {
-  box-shadow: var(--el-box-shadow-light);
 }
 
 /* 设置滚动条的样式 */
@@ -51,4 +43,22 @@ ul, li, ol {
   ::-webkit-scrollbar-thumb {
     background: #444;
   }
+}
+
+// 公共类名
+.radius {
+  border-radius: 10px;
+  // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: var(--el-box-shadow-light);
+}
+
+.shadow {
+  box-shadow: var(--el-box-shadow-light);
+}
+
+.content-inner {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  padding-top: 75px;
 }
