@@ -25,7 +25,14 @@ const routes = [
       {
         path: 'others',
         name: 'others',
-        component: () => import('../views/others/index.vue')
+        redirect: '/others/suncalc',
+        children: [
+          {
+            path: 'suncalc',
+            name: 'suncalc',
+            component: () => import('../views/others/suncalc/index.vue')
+          }
+        ]
       }
     ]
   }

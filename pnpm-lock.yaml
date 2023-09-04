@@ -13,6 +13,9 @@ dependencies:
   pinia:
     specifier: ^2.0.18
     version: 2.0.18(vue@3.2.37)
+  suncalc:
+    specifier: ^1.9.0
+    version: 1.9.0
   vue:
     specifier: ^3.2.37
     version: 3.2.37
@@ -2078,6 +2081,10 @@ packages:
     dependencies:
       acorn: 8.8.2
     dev: true
+
+  /suncalc@1.9.0:
+    resolution: {integrity: sha512-vMJ8Byp1uIPoj+wb9c1AdK4jpkSKVAywgHX0lqY7zt6+EWRRC3Z+0Ucfjy/0yxTVO1hwwchZe4uoFNqrIC24+A==}
+    dev: false
 
   /supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
