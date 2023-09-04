@@ -14,17 +14,26 @@ const appStore = useAppStore()
 const isDark = computed(() => appStore.isDark)
 watch(isDark, (n) => {
   const main = document.querySelector('#main')
-  if (n === false) {
-    main.style.setProperty('--color', '#111')
-    main.style.setProperty('--filter-brightness', '2.4')
-    main.style.setProperty('--filter-hue-rotate', '168deg')
-    main.style.setProperty('--filter-opacity', '1')
-  } else {
-    main.style.setProperty('--color', '#eee')
-    main.style.setProperty('--filter-brightness', '0.5')
-    main.style.setProperty('--filter-hue-rotate', '179deg')
+  let time = 0
+  if (n) {
     main.style.setProperty('--filter-opacity', '0')
+    time = 1700
+  } else {
+    time = 0
   }
+  setTimeout(() => {
+    if (n === false) {
+      main.style.setProperty('--color', '#111')
+      main.style.setProperty('--filter-brightness', '2.4')
+      main.style.setProperty('--filter-hue-rotate', '168deg')
+      main.style.setProperty('--filter-opacity', '1')
+    } else {
+      main.style.setProperty('--color', '#eee')
+      main.style.setProperty('--filter-brightness', '0.5')
+      main.style.setProperty('--filter-hue-rotate', '179deg')
+      main.style.setProperty('--filter-opacity', '1')
+    }
+  }, time)
 })
 
 function getPrecision (value, min, max) {
@@ -103,6 +112,6 @@ onBeforeUnmount(() => { })
   inset: 0;
   backdrop-filter: brightness(var(--filter-brightness)) contrast(var(--filter-contrast)) hue-rotate(var(--filter-hue-rotate));
   opacity: var(--filter-opacity);
-  transition: all 3s;
+  transition: all 2s;
 }
 </style>
