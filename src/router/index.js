@@ -31,6 +31,11 @@ const routes = [
             path: 'suncalc',
             name: 'suncalc',
             component: () => import('../views/others/suncalc/index.vue')
+          },
+          {
+            path: 'canvas-light',
+            name: 'canvas-light',
+            component: () => import('../views/others/canvas-light/index.vue')
           }
         ]
       }
