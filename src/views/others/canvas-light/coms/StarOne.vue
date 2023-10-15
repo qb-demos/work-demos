@@ -26,8 +26,8 @@ function drawCanvas () {
   const width = caWidth.value // 画布宽度
   const height = 500 // 画布高度
   let fPoints = [
-    { x: caWidth.value / 2, y: 410, r: 1.5 },
-    { x: caWidth.value / 2, y: 410, r: 1.5 }
+    { x: caWidth.value / 2, y: 410, r: 3 },
+    { x: caWidth.value / 2, y: 410, r: 3 }
   ] // 初始点坐标
   function drawCircle () {
     for (const fPoint of fPoints) {
@@ -36,16 +36,16 @@ function drawCanvas () {
       context.shadowBlur = 0 // 设置或返回用于阴影的颜色
       context.shadowColor = 'rgba(255, 255, 253,1)' // 设置或返回用于阴影的模糊级别
       context.fillStyle = 'rgba(255, 255, 253,1)' // 填充颜色-实心圆
-      context.fill() // 画实心圆
       context.beginPath()
-      context.arc(fPoint.x, fPoint.y, fPoint.r, 0, Math.PI * 2)
+      context.arc(fPoint.x, fPoint.y, fPoint.r, 3, Math.PI * 2)
       context.closePath()
+      context.fill() // 画实心圆
     }
     // 回到起始位置
     if (fPoints[0].x < 0) {
       fPoints = [
-        { x: caWidth.value / 2, y: 410, r: 1.5 },
-        { x: caWidth.value / 2, y: 410, r: 1.5 }
+        { x: caWidth.value / 2, y: 410, r: 3 },
+        { x: caWidth.value / 2, y: 410, r: 3 }
       ]
       return
     }
