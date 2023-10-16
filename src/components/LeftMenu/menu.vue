@@ -56,10 +56,8 @@ menus.value = [
   {
     label: 'Others',
     children: [
-      {
-        label: 'index',
-        index: '/others'
-      }
+      { label: 'suncalc', index: '/others/suncalc' },
+      { label: 'bubbles', index: '/others/bubbles' }
     ]
   }
 ]

@@ -31,7 +31,12 @@ const routes = [
             path: 'suncalc',
             name: 'suncalc',
             component: () => import('../views/others/suncalc/index.vue')
-          }
+          },
+          {
+            path: 'bubbles',
+            name: 'bubbles',
+            component: () => import('../views/others/bubbles/index.vue')
+          },
         ]
       }
     ]
