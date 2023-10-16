@@ -29,34 +29,26 @@ menus.value = [
   {
     label: 'Element-plus',
     children: [
-      {
-        label: 'index',
-        index: '/element'
-      }
+      { label: 'index', index: '/element' }
     ]
   },
   {
     label: 'Three.js',
     children: [
-      {
-        label: 'index',
-        index: '/three'
-      }
+      { label: 'index', index: '/three' }
     ]
   },
   {
     label: 'Harp.gl',
     children: [
-      {
-        label: 'index',
-        index: '/harp'
-      }
+      { label: 'index', index: '/harp' }
     ]
   },
   {
     label: 'Others',
     children: [
       { label: 'suncalc', index: '/others/suncalc' },
+      { label: '流光特效', index: '/others/canvas-light' },
       { label: 'bubbles', index: '/others/bubbles' }
     ]
   }
