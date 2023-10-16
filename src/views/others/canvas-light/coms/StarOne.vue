@@ -3,7 +3,7 @@
        :style="{ backgroundImage: `url(${bg})` }">
     <div ref="refBox"
          class="canvas-box">
-      <canvas ref="refStarOne"
+      <canvas ref="refStar"
               :width="caWidth"
               height="500" />
     </div>
@@ -19,53 +19,46 @@ function getWidth () {
   caWidth.value = refBox.value.clientWidth
 }
 
-const refStarOne = ref(null)
+const refStar = ref(null)
 function drawCanvas () {
-  const c = refStarOne.value
+  const c = refStar.value
   const context = c.getContext('2d')
   const width = caWidth.value // 画布宽度
   const height = 500 // 画布高度
   let fPoints = [
-    { x: caWidth.value / 2, y: 410, r: 3 },
-    { x: caWidth.value / 2, y: 410, r: 3 }
+    { x: caWidth.value / 2, y: 60, r: 3 },
+    { x: caWidth.value / 2, y: 60, r: 3 }
   ] // 初始点坐标
   function drawCircle () {
     for (const fPoint of fPoints) {
-      context.lineWidth = 0 // 线条宽度-空心圆
-      // context.strokeStyle = 'rgba(2, 179, 253,0.02)' // 颜色
-      context.shadowBlur = 0 // 设置或返回用于阴影的颜色
-      context.shadowColor = 'rgba(255, 255, 253,1)' // 设置或返回用于阴影的模糊级别
-      context.fillStyle = 'rgba(255, 255, 253,1)' // 填充颜色-实心圆
-      context.beginPath()
-      context.arc(fPoint.x, fPoint.y, fPoint.r, 3, Math.PI * 2)
-      context.closePath()
-      context.fill() // 画实心圆
+      context.shadowColor = 'rgba(19,238,227,1)' // 设置或返回用于阴影的模糊级别
+      context.fillStyle = 'rgba(19,238,227,1)' // 填充颜色-实心圆
+      // 实心圆
+      // context.beginPath()
+      // context.arc(fPoint.x, fPoint.y, fPoint.r, 3, Math.PI * 2)
+      // context.closePath()
+      // context.fill()
+      // 正方形
+      context.fillRect(fPoint.x, fPoint.y, 5, 5)
     }
     // 回到起始位置
-    if (fPoints[0].x < 0) {
+    if (fPoints[0].x < -200) {
       fPoints = [
-        { x: caWidth.value / 2, y: 410, r: 3 },
-        { x: caWidth.value / 2, y: 410, r: 3 }
+        { x: caWidth.value / 2, y: 60, r: 3 },
+        { x: caWidth.value / 2, y: 60, r: 3 }
       ]
       return
     }
-    // 向斜上方移动
-    if (fPoints[0].y > 265) {
-      fPoints[0].x -= 2
-      fPoints[0].y -= 1.15
-      fPoints[1].x += 2
-      fPoints[1].y -= 1.15
-    } else if (fPoints[0].y > 0) {
-      // 向两侧移动
-      fPoints[0].x -= 2.5
-      fPoints[1].x += 2.5
-    }
+    // 移动
+    const speed = 1.8
+    fPoints[0].x -= speed
+    fPoints[1].x += speed
   }
   function render () {
     // 默认值为source-over
     const prev = context.globalCompositeOperation
     // 只显示canvas上原图像的重叠部分
-    context.globalCompositeOperation = 'destination-in'
+    context.globalCompositeOperation = 'source-in'
     // 设置主canvas的绘制透明度
     context.globalAlpha = 0.9
     // 这一步目的是将canvas上的图像变的透明
