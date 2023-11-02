@@ -100,7 +100,7 @@ onBeforeUnmount(() => { })
 
   .book-wrap {
     padding: 1px 15px;
-    background: repeating-linear-gradient(90deg, white, #e2e2e2 1px, white 3px, #9a9a9a 1px);
+    background: repeating-linear-gradient(90deg, var(--el-bg-color), #e2e2e2 1px, var(--el-bg-color) 3px, #9a9a9a 1px);
     border-radius: 6px;
     border: 4px solid #515378;
     border-left-width: 8px;
