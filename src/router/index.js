@@ -42,6 +42,11 @@ const routes = [
             name: 'bubbles',
             component: () => import('../views/others/bubbles/index.vue')
           },
+          {
+            path: 'book-imgs',
+            name: 'book-imgs',
+            component: () => import('../views/others/book-imgs/index.vue')
+          },
         ]
       }
     ]

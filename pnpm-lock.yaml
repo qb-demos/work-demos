@@ -10,6 +10,9 @@ dependencies:
   element-plus:
     specifier: ^2.2.12
     version: 2.2.12(vue@3.2.37)
+  page-flip:
+    specifier: ^2.0.7
+    version: 2.0.7
   pinia:
     specifier: ^2.0.18
     version: 2.0.18(vue@3.2.37)
@@ -1808,6 +1811,10 @@ packages:
       type-check: 0.4.0
       word-wrap: 1.2.3
     dev: true
+
+  /page-flip@2.0.7:
+    resolution: {integrity: sha512-96lQFUUz7r/LZzEUZJ3yBIMEKU9+m8HMFDzTvTdD6P7Ag/wXINjp9n0W7b4wanwnDbQETo4uNUoL3zMqpFxwGA==}
+    dev: false
 
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
