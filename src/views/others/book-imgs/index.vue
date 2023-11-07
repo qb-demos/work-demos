@@ -37,8 +37,9 @@
 </template>
 
 <script setup>
-// https://nodlik.github.io/StPageFlip/
-import { PageFlip } from 'page-flip'
+import { PageFlip } from 'qb-flip-book'
+import 'qb-flip-book/dist/style.css'
+
 import { ArrowLeftBold, ArrowRightBold } from '@element-plus/icons-vue'
 import img01 from './imgs/img (1).jpg'
 import img02 from './imgs/img (2).jpg'
@@ -57,15 +58,15 @@ import { nextTick } from 'vue'
 const imgs = [img01, img02, img03, img04, img05, img06, img07, img08, img09, img10, img11, img12]
 const bookArea = ref(null)
 const pageWidth = 500
-const pageHeight = 400
+const pageHeight = 700
 const pageFlip = shallowRef(null)
 function init () {
   pageFlip.value = new PageFlip(bookArea.value, {
     width: pageWidth, // required parameter - base page width
     height: pageHeight, // required parameter - base page height
     showCover: false,
-    MaxShadowOpacity: 1,
-    flippingTime: 500 // 翻转动画时间，单位毫秒
+    // MaxShadowOpacity: 1,
+    flippingTime: 400 // 翻转动画时间，单位毫秒
   })
   pageFlip.value.loadFromHTML(document.querySelectorAll('.book-page'))
 }
@@ -118,7 +119,8 @@ onBeforeUnmount(() => { })
       align-items: center;
       position: relative;
       overflow: hidden;
-      box-shadow: inset -7px 0 30px -7px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0px 0 20px 2px rgba(0, 0, 0, 0.3);
+      padding: 20px;
 
       &:nth-child(2n) {
         border-top-right-radius: 2px;
@@ -131,7 +133,7 @@ onBeforeUnmount(() => { })
           position: absolute;
           top: 0;
           left: 0;
-          background: linear-gradient(to right, rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, 0) 100%);
+          background: linear-gradient(to right, rgba(0, 0, 0, .2) 0%, rgba(0, 0, 0, 0) 100%);
           z-index: 2;
           border-left: 1px solid #515378;
         }
@@ -148,7 +150,7 @@ onBeforeUnmount(() => { })
           position: absolute;
           top: 0;
           right: 0;
-          background: linear-gradient(to left, rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, 0) 100%);
+          background: linear-gradient(to left, rgba(0, 0, 0, .2) 0%, rgba(0, 0, 0, 0) 100%);
           z-index: 2;
           border-right: 1px solid #515378;
         }
@@ -157,7 +159,7 @@ onBeforeUnmount(() => { })
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
 
