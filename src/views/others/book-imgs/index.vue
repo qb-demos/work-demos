@@ -7,8 +7,14 @@
         <div v-for="(img, i) in imgs"
              :key="i"
              class="book-page">
-          <img :src="img"
-               :alt="i">
+          <div class="page-inner">
+            <div class="name">{{ img.name }}</div>
+            <div class="image-wrap">
+              <img :src="img.url"
+                   :alt="i">
+            </div>
+            <div class="page-num">{{ i + 1 }}-{{ imgs.length }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -55,11 +61,11 @@ import img11 from './imgs/img (11).jpg'
 import img12 from './imgs/img (12).jpg'
 import { nextTick } from 'vue'
 
-const imgs = [img01, img02, img03, img04, img05, img06, img07, img08, img09, img10, img11, img12]
+const imgs = [{ url: img01, name: 'img01' }, { url: img02, name: 'img02' }, { url: img03, name: 'img03' }, { url: img04, name: 'img04' }, { url: img05, name: 'img05' }, { url: img06, name: 'img06' }, { url: img07, name: 'img07' }, { url: img08, name: 'img08' }, { url: img09, name: 'img09' }, { url: img10, name: 'img10' }, { url: img11, name: 'img11' }, { url: img12, name: 'img12' }]
 const bookArea = ref(null)
 const pageWidth = 500
 const pageHeight = 700
-const pageFlip = shallowRef(null)
+const pageFlip = ref(null)
 function init () {
   pageFlip.value = new PageFlip(bookArea.value, {
     width: pageWidth, // required parameter - base page width
@@ -78,9 +84,8 @@ function toNext () {
 }
 const pageNum = ref(0)
 function toPage () {
-  console.log('%c pageNum.value: ', 'background-color: pink', pageNum.value)
   nextTick(() => {
-    pageFlip.value.flip(pageNum.value)
+    pageFlip.value.flip(Number(pageNum.value))
   })
 }
 
@@ -115,10 +120,6 @@ onBeforeUnmount(() => { })
     background-color: #fff;
 
     .book-page {
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
       box-shadow: inset 0px 0 20px 2px rgba(0, 0, 0, 0.3);
       padding: 20px;
 
@@ -156,13 +157,36 @@ onBeforeUnmount(() => { })
         }
       }
 
-      img {
+      .page-inner {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+
+        .name {
+          font-size: 20px;
+        }
+
+        .image-wrap {
+          flex: 1;
+          height: 0;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        .page-num {
+          text-align: center;
+          color: #777;
+        }
       }
     }
-
   }
 
   .book-control {
