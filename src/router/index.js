@@ -47,6 +47,11 @@ const routes = [
             name: 'book-imgs',
             component: () => import('../views/others/book-imgs/index.vue')
           },
+          {
+            path: 'water-mark',
+            name: 'water-mark',
+            component: () => import('../views/others/water-mark/index.vue')
+          },
         ]
       }
     ]
