@@ -52,6 +52,11 @@ const routes = [
             name: 'water-mark',
             component: () => import('../views/others/water-mark/index.vue')
           },
+          {
+            path: 'echarts',
+            name: 'echarts',
+            component: () => import('../views/others/echarts/index.vue')
+          }
         ]
       }
     ]

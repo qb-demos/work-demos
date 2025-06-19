@@ -51,7 +51,8 @@ menus.value = [
       { label: '流光特效', index: '/others/canvas-light' },
       { label: 'bubbles', index: '/others/bubbles' },
       { label: '图片翻书效果', index: '/others/book-imgs' },
-      { label: '水印', index: '/others/water-mark' }
+      { label: '水印', index: '/others/water-mark' },
+      { label: 'echarts', index: '/others/echarts' }
     ]
   }
 ]
