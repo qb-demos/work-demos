@@ -2,8 +2,14 @@
   <div class="page-wrap">
     <div class="chart-wrap">
       <div
-        class="chart-item"
-        id="chart-dom-1"></div>
+        id="chart-dom-1"
+        class="chart-item"></div>
+      <el-button
+        type="primary"
+        class="refresh-btn"
+        @click="onRefresh">
+        刷新
+      </el-button>
     </div>
   </div>
 </template>
@@ -22,13 +28,27 @@ function initChart() {
   let option
 
   option = {
+    grid: {
+      left: '0',
+      right: '0',
+      bottom: '0',
+      top: '0',
+      containLabel: true,
+    },
     xAxis: {
       type: 'category',
       boundaryGap: false,
       data: xData,
+      axisLine: { show: false },
+      axisLabel: { show: false },
+      axisTick: { show: false },
     },
     yAxis: {
       type: 'value',
+      axisLine: { show: false },
+      axisLabel: { show: false },
+      axisTick: { show: false },
+      splitLine: { show: false },
     },
     visualMap: {
       show: false,
@@ -50,25 +70,19 @@ function initChart() {
         smooth: true,
         sampling: 'lttb',
         lineStyle: {
-          width: 5,
+          width: 0,
         },
         areaStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            {
-              offset: 0,
-              color: 'rgba(0,0,0,0.3)',
-            },
-            {
-              offset: 1,
-              color: 'rgba(0,0,0,0.3)',
-            },
-          ]),
+          origin: 'start',
         },
       },
     ],
   }
 
   option && chartInstance.setOption(option)
+}
+function onRefresh() {
+  initChart()
 }
 
 onMounted(() => {
@@ -84,6 +98,7 @@ onBeforeUnmount(() => {})
   padding-top: 60px;
 
   .chart-wrap {
+    position: relative;
     width: 100%;
     height: 100%;
 
@@ -91,6 +106,13 @@ onBeforeUnmount(() => {})
       width: 100%;
       height: 200px;
       background-color: var(--el-color-info-light-9);
+    }
+
+    .refresh-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      z-index: 100;
     }
   }
 }
