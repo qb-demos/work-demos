@@ -56,6 +56,11 @@ const routes = [
             path: 'echarts',
             name: 'echarts',
             component: () => import('../views/others/echarts/index.vue')
+          },
+          {
+            path: 'echarts-bin-zhou',
+            name: 'echarts-bin-zhou',
+            component: () => import('../views/others/echarts/bin-zhou.vue')
           }
         ]
       }
