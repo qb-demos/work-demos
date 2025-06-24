@@ -7,7 +7,18 @@
       <el-button
         type="primary"
         class="refresh-btn"
-        @click="onRefresh">
+        @click="onRefresh('line')">
+        刷新
+      </el-button>
+    </div>
+    <div class="chart-wrap">
+      <div
+        id="chart-dom-2"
+        class="chart-item"></div>
+      <el-button
+        type="primary"
+        class="refresh-btn"
+        @click="onRefresh('bar')">
         刷新
       </el-button>
     </div>
@@ -17,82 +28,52 @@
 <script setup>
 import * as echarts from 'echarts'
 import { xData, yData } from './mock'
+import { lineOptions, barOptions } from './options'
 
-let chartInstance = null
-function initChart() {
-  if (chartInstance) {
-    chartInstance.dispose()
+let chartInstanceLine = null
+function initLineChart() {
+  if (chartInstanceLine) {
+    chartInstanceLine.dispose()
   }
   const chartDom = document.getElementById('chart-dom-1')
-  chartInstance = echarts.init(chartDom)
+  chartInstanceLine = echarts.init(chartDom)
   let option
 
-  option = {
-    grid: {
-      left: '0',
-      right: '0',
-      bottom: '0',
-      top: '0',
-      containLabel: true,
-    },
-    xAxis: {
-      type: 'category',
-      boundaryGap: false,
-      data: xData,
-      axisLine: { show: false },
-      axisLabel: { show: false },
-      axisTick: { show: false },
-    },
-    yAxis: {
-      type: 'value',
-      axisLine: { show: false },
-      axisLabel: { show: false },
-      axisTick: { show: false },
-      splitLine: { show: false },
-    },
-    visualMap: {
-      show: false,
-      dimension: 1,
-      pieces: [
-        { lte: 10, color: '#a1f18d' },
-        { gt: 10, lte: 25, color: '#3dba3d' },
-        { gt: 25, lte: 50, color: '#6acef2' },
-        { gt: 50, lte: 100, color: '#0000ff' },
-        { gt: 100, lte: 200, color: '#fa00fa' },
-        { gt: 200, color: '#800040' },
-      ],
-    },
-    series: [
-      {
-        data: yData,
-        type: 'line',
-        symbol: 'none',
-        smooth: true,
-        sampling: 'lttb',
-        lineStyle: {
-          width: 0,
-        },
-        areaStyle: {
-          origin: 'start',
-        },
-      },
-    ],
-  }
-
-  option && chartInstance.setOption(option)
+  option = lineOptions(xData, yData)
+  option && chartInstanceLine.setOption(option)
 }
-function onRefresh() {
-  initChart()
+let chartInstanceBar = null
+function initBarChart() {
+  if (chartInstanceBar) {
+    chartInstanceBar.dispose()
+  }
+  const chartDom = document.getElementById('chart-dom-2')
+  chartInstanceBar = echarts.init(chartDom)
+  let option
+
+  option = barOptions(xData, yData)
+  option && chartInstanceBar.setOption(option)
+}
+function onRefresh(type) {
+  if (type === 'line') {
+    initLineChart()
+  } else {
+    initBarChart()
+  }
 }
 
 onMounted(() => {
-  initChart()
+  initLineChart()
+  initBarChart()
 })
 onBeforeUnmount(() => {})
 </script>
 
 <style lang="scss" scoped>
 .page-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
   height: 100%;
   padding-top: 60px;
@@ -100,11 +81,11 @@ onBeforeUnmount(() => {})
   .chart-wrap {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 100px;
 
     .chart-item {
       width: 100%;
-      height: 200px;
+      height: 100%;
       background-color: var(--el-color-info-light-9);
     }
 
