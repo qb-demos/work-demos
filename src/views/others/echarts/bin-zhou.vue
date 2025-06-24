@@ -40,8 +40,8 @@ function initLine2Chart() {
 
   let option1 = null
   let option2 = null
-  const yDataList1 = yDataList.value.slice(0, 1)
-  const yDataList2 = yDataList.value.slice(1, 5)
+  const yDataList1 = yDataList.value.slice(0, 2)
+  const yDataList2 = yDataList.value.slice(2, 10)
   option1 = line2Options(xData2, yDataList1)
   option1 && chartInstanceLine1.setOption(option1)
   option2 = line2Options(xData2, yDataList2)
@@ -55,8 +55,8 @@ function updateLine2Chart() {
     } else {
       activeTimeIndex.value++
     }
-    const yDataList1 = yDataList.value.slice(0, 1)
-    const yDataList2 = yDataList.value.slice(1, 5)
+    const yDataList1 = yDataList.value.slice(0, 2)
+    const yDataList2 = yDataList.value.slice(2, 10)
     chartInstanceLine1.setOption({
       xAxis: {
         data: xData2,
