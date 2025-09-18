@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import model01 from './model-01.vue'
+import model01 from './model-01/index.vue'
 import model02 from './model-02.vue'
 import model03 from './model-03.vue'
 

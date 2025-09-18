@@ -8,8 +8,8 @@
 </template>
 
 <script setup>
-import { TreeNode01, GREY_COLOR } from './g6-tree-chart.js'
-import { ExtensionCategory, Graph, GraphEvent, register, treeToGraphData } from '@antv/g6'
+import { registerCustomNodes, GREY_COLOR } from './custom-node.js'
+import { Graph, GraphEvent, treeToGraphData } from '@antv/g6'
 import mockData from './mock01.json'
 
 const chartContainer = ref()
@@ -19,7 +19,7 @@ let chartInstance = null
 const initChart = () => {
   if (chartContainer.value) {
     // 注册自定义节点
-    register(ExtensionCategory.NODE, 'tree-node-01', TreeNode01)
+    registerCustomNodes()
 
     const data = mockData
     const graph = new Graph({
@@ -34,9 +34,9 @@ const initChart = () => {
         },
       }),
       node: {
-        type: 'tree-node-01',
+        type: 'custom-node-html-01',
         style: {
-          size: [202, 60],
+          size: [200, 60],
           ports: [{ placement: 'left' }, { placement: 'right' }],
           radius: 4,
         },
@@ -51,7 +51,7 @@ const initChart = () => {
         type: 'indented',
         direction: 'LR',
         dropCap: false,
-        indent: 300,
+        indent: 240,
         getHeight: () => 60,
         preLayout: false,
       },
@@ -88,7 +88,6 @@ onBeforeUnmount(() => {
   .chart-content {
     height: 100%;
     overflow: hidden;
-    background: #ffffff;
   }
 }
 </style>
