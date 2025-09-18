@@ -53,6 +53,7 @@ menus.value = [
       { label: '水印', index: '/others/water-mark' },
       { label: 'echarts', index: '/others/echarts' },
       { label: '滨州', index: '/others/echarts-bin-zhou' },
+      { label: 'g6', index: '/others/g6' },
     ],
   },
 ]
