@@ -185,7 +185,7 @@ export class CustomNodeHTML01 extends HTML {
         "></div>
         
         <!-- 名称 -->
-        <div class="node-text" style="
+        <div class="custom-node-html-01-name" style="
           font-size: 14px;
           color: #303133;
           width: 100%;
@@ -197,7 +197,7 @@ export class CustomNodeHTML01 extends HTML {
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
           word-break: break-word;
-          cursor: default;
+          cursor: pointer;
         " title="${data.name}">${data.name}</div>
         
         <!-- 展开/折叠按钮 -->
@@ -253,6 +253,43 @@ export class CustomNodeHTML01 extends HTML {
           }
         })
       }
+    }
+
+    // 绑定节点名称点击事件
+    const nodeElement = this.getDomElement()?.querySelector('.custom-node-html-01-name')
+    if (nodeElement && !Reflect.has(nodeElement, '__nodeClickBind__')) {
+      Reflect.set(nodeElement, '__nodeClickBind__', true)
+      nodeElement.addEventListener('click', (e) => {
+        // 如果点击的是折叠按钮，则不触发节点点击事件
+        if (e.target.closest('.collapse-btn')) {
+          return
+        }
+
+        // 抛出节点数据事件
+        const nodeData = this.data
+        console.log('节点被点击，数据:', nodeData)
+
+        // 可以通过自定义事件向外抛出数据
+        const customEvent = new CustomEvent('nodeClick', {
+          detail: {
+            nodeId: this.id,
+            nodeData: nodeData,
+            element: this,
+          },
+          bubbles: true,
+        })
+        nodeElement.dispatchEvent(customEvent)
+
+        // 也可以通过 graph 的事件系统抛出
+        const graph = this.context.graph
+        if (graph && graph.emit) {
+          graph.emit('node:click', {
+            nodeId: this.id,
+            nodeData: nodeData,
+            originalEvent: e,
+          })
+        }
+      })
     }
   }
 }
